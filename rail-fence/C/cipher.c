@@ -45,7 +45,10 @@ char *cipher(char *plain_text, int depth) {
     return cipher_text;
 }
 
-int main() {
-    cipher("ABCDEFG", 3);
+int main(int argc, char **argv) {
+    if(argc < 3){
+        printf("USAGE: cipher <plain-text> <depth>");
+    }
+    printf("Cipher text: %s\n", cipher(argv[1], atoi(argv[2])));
     return 0;
 }
