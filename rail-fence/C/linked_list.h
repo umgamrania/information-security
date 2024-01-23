@@ -62,10 +62,11 @@ void print_list(linked_list_t *list) {
 
 void free_list(linked_list_t *list) {
     node_t *ptr = list->head;
-    node_t *temp;
+    node_t *tmp;
 
     while(ptr != NULL){
-        temp = ptr->next;
-        free(ptr);
+        tmp = ptr;
+        ptr = ptr->next;
+        free(tmp);
     }
 }
