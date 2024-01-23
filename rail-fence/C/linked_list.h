@@ -59,3 +59,13 @@ void print_list(linked_list_t *list) {
     }
     printf("\n");
 }
+
+void free_list(linked_list_t *list) {
+    node_t *ptr = list->head;
+    node_t *temp;
+
+    while(ptr != NULL){
+        temp = ptr->next;
+        free(ptr);
+    }
+}
