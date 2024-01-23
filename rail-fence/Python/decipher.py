@@ -32,6 +32,26 @@ def decipher(cipher_text: str, depth: int):
         element_count[i] += 1
         i += 1
 
-    print(element_count)
+    indices = [0]
+    total = 0
+    for i in element_count[:-1]:
+        indices.append(total + i)
+        total += i
 
-decipher("rjiauadajgrnaktaiot", 5)
+    i = 0
+    pt = []
+    direction = 1
+
+    while len(pt) < len(cipher_text):
+        index = indices[i]
+        pt.append(cipher_text[index])
+        indices[i] += 1
+
+        if i == 0: direction = 1
+        elif i == len(indices) - 1: direction = -1
+
+        i += direction
+    
+    return "".join(pt)
+
+print(decipher("ummaraagainn", 4))

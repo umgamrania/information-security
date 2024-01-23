@@ -16,4 +16,4 @@ def cipher(text: str, depth: int):
         ["".join(row_str) for row_str in matrix] # joining rows into string
     )
 
-print(cipher("rajkotgujaratindiaa", 5))
+print(cipher("umangamrania", 4))
