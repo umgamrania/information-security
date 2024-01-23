@@ -6,10 +6,6 @@ def decipher(cipher_text: str, depth: int):
     p = floor( ct_len / tick_size )
     r = ct_len % tick_size
 
-    print(f"tick size = {tick_size}")
-    print(f"p = {p}")
-    print(f"r = {r}")
-
     matrix = [[] for _ in range(depth)] # preparing empty matrix
     element_count = [0 for _ in range(depth)] # stores no of elements in each row
     
@@ -31,11 +27,10 @@ def decipher(cipher_text: str, depth: int):
         while i > r - depth:
             element_count[i] += 1
             i -= 1
-    else:
-        i = 0
-        while i < r:
-            element_count[i] += 1
-            i += 1
+    i = 0
+    while i < min(r, depth):
+        element_count[i] += 1
+        i += 1
 
     print(element_count)
 
