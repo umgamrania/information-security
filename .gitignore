@@ -1,3 +1,4 @@
 btv.py
 *.out
 *.exe
+.vscode

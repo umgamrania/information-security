@@ -1,8 +1,13 @@
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
-void cipher(char *str, int key) {
+char *cipher(char *str, int key) {
+    int pt_len = strlen(str);
+    char *cipher_text = (char*)malloc(sizeof(char) * pt_len);
+
     // iterating over characters
-    for(int i = 0; str[i] != '\0'; i++){
+    for(int i = 0; i < pt_len; i++){
         char c = str[i];
 
         // processing capital and small letters seperately
@@ -10,28 +15,26 @@ void cipher(char *str, int key) {
             // subtracting A will give character index, e.g. 0 for A, 1 for B, ...
             int index = c - 'A';
             index = (index + key) % 26;
-            str[i] = 'A' + index;
+            cipher_text[i] = 'A' + index;
         }else{
             int index = c - 'a';
             index = (index + key) % 26;
-            str[i] = 'a' + index;
+            cipher_text[i] = 'a' + index;
         }
     }
+
+    return cipher_text;
 }
 
-int main() {
-    char str[1024];
-    int k;
+int main(int argc, char **argv) {
 
-    printf("Enter plain text (string): ");
-    scanf("%s", str);
+    if(argc < 3){
+        printf("USAGE: <plain-text> <key>\n");
+        return EXIT_FAILURE;
+    }
 
-    printf("Enter key (int): ");
-    scanf("%d", &k);
+    char *cipher_text = cipher(argv[1], atoi(argv[2]));
+    printf("Cipher text: %s\n", cipher_text);
 
-    cipher(str, k);
-
-    printf("Cipher text: %s\n", str);
-
-    return 0;
+    return EXIT_SUCCESS;
 }

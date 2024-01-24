@@ -1,8 +1,14 @@
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
-void decipher(char *str, int key) {
+char *decipher(char *str, int key) {
+
+    int ct_len = strlen(str);
+    char *plain_text = (char*)malloc(ct_len * sizeof(char));
+
     // iterating over characters
-    for(int i = 0; str[i] != '\0'; i++){
+    for(int i = 0; ct_len; i++){
         char c = str[i];
 
         // processing capital and small letters seperately
@@ -18,31 +24,29 @@ void decipher(char *str, int key) {
                 // If original char is negative, it means the plain text near the end
                 original_char = 26 - (original_char * -1);
             }
-            str[i] = 'A' + original_char;
+            plain_text[i] = 'A' + original_char;
         }else{
             int index = c - 'a';
             int original_char = index - key;
             if(original_char < 0) {
                 original_char = 26 - (original_char * -1);
             }
-            str[i] = 'a' + original_char;
+            plain_text[i] = 'a' + original_char;
         }
     }
+
+    return plain_text;
 }
 
-int main() {
-    char str[1024];
-    int k;
+int main(int argc, char **argv) {
 
-    printf("Enter cipher text (string): ");
-    scanf("%s", str);
+    if(argc < 3){
+        printf("USAGE: <cipher-text> <key>\n");
+        return EXIT_FAILURE;
+    }
 
-    printf("Enter key (int): ");
-    scanf("%d", &k);
-
-    decipher(str, k);
-
-    printf("Plain text: %s\n", str);
+    char *plain_text = decipher(argv[1], atoi(argv[2]));
+    printf("Plain text: %s\n", plain_text);
 
     return 0;
 }

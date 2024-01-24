@@ -1,3 +1,5 @@
+import sys
+
 def cipher(plain_text: str, key: int):
     '''
         Masking ascii value to get index
@@ -23,6 +25,8 @@ def cipher(plain_text: str, key: int):
 
     return cipher_text
 
-plain_text = input("Enter plain text (string): ")
-key = int(input("Enter key (int): "))
-print(f"Cipher text: {cipher(plain_text, key)}")
+if len(sys.argv) < 3:
+    print("USAGE: <plain-text> <key>")
+    exit()
+
+print(f"Cipher text: {cipher(sys.argv[1], int(sys.argv[2]))}")

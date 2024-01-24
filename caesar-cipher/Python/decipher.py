@@ -1,3 +1,5 @@
+import sys
+
 def decipher(cipher_text: str, key: int):
     plain_text = ""
     for char in cipher_text:
@@ -15,6 +17,8 @@ def decipher(cipher_text: str, key: int):
 
     return plain_text
 
-plain_text = input("Enter plain text (string): ")
-key = int(input("Enter key (int): "))
-print(f"Cipher text: {decipher(plain_text, key)}")
+if len(sys.argv) < 3:
+    print("USAGE: <cipher-text> <key>")
+    exit()
+
+print(f"Cipher text: {decipher(sys.argv[1], int(sys.argv[2]))}")
