@@ -47,8 +47,9 @@ char *cipher(char *plain_text, int depth) {
 
 int main(int argc, char **argv) {
     if(argc < 3){
-        printf("USAGE: cipher <plain-text> <depth>");
+        printf("USAGE: cipher <plain-text> <depth>\n");
+        return EXIT_FAILURE;
     }
     printf("Cipher text: %s\n", cipher(argv[1], atoi(argv[2])));
-    return 0;
+    return EXIT_SUCCESS;
 }

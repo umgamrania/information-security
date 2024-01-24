@@ -18,7 +18,7 @@ char *decipher(char *cipher_text, int depth) {
         element_count[depth-1]++;
     }
 
-    for(int i = 0; i < depth - 1; i++) {
+    for(int i = 1; i < depth - 1; i++) {
         element_count[i] = p * 2;
     }
 
@@ -36,22 +36,13 @@ char *decipher(char *cipher_text, int depth) {
         i++;
     }
 
-    for(int i = 0; i < depth; i++){
-        printf("%d ", element_count[i]);
-    }
-    printf("\n");
-
     int indices[depth];
     indices[0] = 0;
     int total = 0;
-    for(int i = 0; i < depth - 2; i++) {
+    for(int i = 0; i < depth - 1; i++) {
         indices[i+1] = total + element_count[i];
         total += element_count[i];
     }
-
-    for(i = 0; i < depth; i++)
-        printf("%d ", indices[i]);
-    printf("\n");
 
     char *pt = (char*)malloc(sizeof(char) * ct_len);
     i = 0;
@@ -76,5 +67,5 @@ char *decipher(char *cipher_text, int depth) {
 }
 
 int main(int argc, char **argv) {
-    printf("%s\n", decipher("rjiauadjgrnktaiot", 5));
+    printf("%s\n", decipher(argv[1], atoi(argv[2])));
 }
