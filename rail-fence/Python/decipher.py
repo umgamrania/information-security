@@ -5,8 +5,7 @@ def decipher(cipher_text: str, depth: int):
     tick_size = (2 * depth) - 2
     p = floor( ct_len / tick_size )
     r = ct_len % tick_size
-
-    matrix = [[] for _ in range(depth)] # preparing empty matrix
+    
     element_count = [0 for _ in range(depth)] # stores no of elements in each row
     
     element_count[0] = p
