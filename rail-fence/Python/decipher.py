@@ -1,4 +1,5 @@
 from math import floor
+import sys
 
 def decipher(cipher_text: str, depth: int):
     ct_len = len(cipher_text)
@@ -53,4 +54,5 @@ def decipher(cipher_text: str, depth: int):
     
     return "".join(pt)
 
-print(decipher("ummaraagainn", 4))
+if __name__ == "__main__":
+    print(decipher(sys.argv[1], int(sys.argv[2])))

@@ -1,3 +1,5 @@
+import sys
+
 def cipher(text: str, depth: int):
     matrix = [[] for _ in range(depth)]
 
@@ -16,4 +18,5 @@ def cipher(text: str, depth: int):
         ["".join(row_str) for row_str in matrix] # joining rows into string
     )
 
-print(cipher("umangamrania", 4))
+if __name__ == "__main__":
+    print(cipher(sys.argv[1], int(sys.argv[2])))
