@@ -10,6 +10,8 @@ char *cipher(char *plain_text, int depth) {
         matrix[i] = new_list();
     }
 
+    printf(" \b");
+
     int row = 0;
     int direction = 1; // going up or going down
 

@@ -2,3 +2,4 @@ btv.py
 *.out
 *.exe
 .vscode
+generate.py
