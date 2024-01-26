@@ -77,4 +77,9 @@ if __name__ == "__main__":
         print("USAGE: <plain-text> <key>")
         exit()
     
-    print(cipher(plain_text=argv[1].upper(), key=argv[2].upper()))
+    cipher_text = cipher(plain_text=argv[1].upper(), key=argv[2].upper())
+
+    print(cipher_text)
+
+    if 'i' in cipher_text:
+        print(cipher_text.replace('i', 'j'))
