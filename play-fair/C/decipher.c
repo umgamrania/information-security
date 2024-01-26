@@ -151,7 +151,12 @@ char *decipher(char *cipher_text, char *key) {
     return plain_text;
 }
 
-int main() {
-    printf("%s\n", decipher("SPOPPGKSOPPH", "hello"));
+int main(int argc, char **argv) {
+    if(argc < 3){
+        printf("USAGE: <cipher-text> <key>\n");
+        return EXIT_FAILURE;
+    }
+
+    printf("%s\n", decipher(argv[1], argv[2]));
     return EXIT_SUCCESS;
 }

@@ -148,7 +148,12 @@ char *cipher(char *plain_text, char *key) {
     return cipher_text;
 }
 
-int main() {
-    printf("%s\n", cipher("umangamrania", "hello"));
+int main(int argc, char **argv) {
+    if(argc < 3){
+        printf("USAGE: <plain-text> <key>\n");
+        return EXIT_FAILURE;
+    }
+
+    printf("%s\n", cipher(argv[1], argv[2]));
     return EXIT_SUCCESS;
 }
