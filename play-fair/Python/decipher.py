@@ -2,7 +2,7 @@ from sys import argv
 
 def create_matrix(key: str):
     # Creating a string to store the characters for the matrix
-    buf = key.lower() + "abcdefghijklmnopqrstuvwxyz"
+    buf = key.lower() + "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     matrix_str = ""
     for char in buf : 
         if not char in matrix_str:
@@ -61,11 +61,11 @@ def decipher(cipher_text: str, key: str) -> str:
                 col_b = row.index(b)
             
         if row_a == row_b:
-            plain_text.append(matrix[row_a][(col_a + 1) % 5])
-            plain_text.append(matrix[row_b][(col_b + 1) % 5])
+            plain_text.append(matrix[row_a][(col_a - 1) % 5])
+            plain_text.append(matrix[row_b][(col_b - 1) % 5])
         elif col_a == col_b:
-            plain_text.append(matrix[(row_a + 1) % 5][col_a])
-            plain_text.append(matrix[(row_b + 1) % 5][col_b])
+            plain_text.append(matrix[(row_a - 1) % 5][col_a])
+            plain_text.append(matrix[(row_b - 1) % 5][col_b])
         else:
             plain_text.append(matrix[row_a][col_b])
             plain_text.append(matrix[row_b][col_a])
