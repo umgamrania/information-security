@@ -2,7 +2,7 @@ from sys import argv
 
 def create_matrix(key: str):
     # Creating a string to store the characters for the matrix
-    buf = key.lower() + "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    buf = key.lower() + "ABCDEFGHIKLMNOPQRSTUVWXYZ"
     matrix_str = ""
     for char in buf : 
         if not char in matrix_str:
