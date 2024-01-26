@@ -2,7 +2,7 @@ from sys import argv
 
 def create_matrix(key: str):
     # Creating a string to store the characters for the matrix
-    buf = key.lower() + "abcdefghijklmnopqrstuvwxyz"
+    buf = key.upper() + "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     matrix_str = ""
     for char in buf : 
         if not char in matrix_str:
@@ -77,4 +77,4 @@ if __name__ == "__main__":
         print("USAGE: <plain-text> <key>")
         exit()
     
-    print(cipher(plain_text=argv[1].lower(), key=argv[2].lower()))
+    print(cipher(plain_text=argv[1].upper(), key=argv[2].upper()))
