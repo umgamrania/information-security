@@ -40,8 +40,6 @@ def compute_e(p, q):
     for i in range(2, phi):
         if gcd(i, phi) == 1: values.append(i)
 
-    print(values)
-
     return values
 
 def compute_d(e, p, q):
@@ -83,6 +81,4 @@ def encrypt(plain_text):
     
     return "".join(encrypted)
 
-# print(encrypt("Hello"))
-
-compute_e(5, 7)
+print(encrypt("Hello"))
