@@ -28,14 +28,14 @@ def create_pairs(plain_text: str):
         
         if i == len(plain_text) - 1:
             # Last character, string has odd chars
-            pairs.append((a, 'x'))
+            pairs.append((a, 'X'))
             break
 
         else:
             b = plain_text[i+1]
 
             if a == b:
-                pairs.append((a, 'x'))
+                pairs.append((a, 'X'))
                 i += 1
             else:
                 pairs.append((a, b))
@@ -45,7 +45,9 @@ def create_pairs(plain_text: str):
 
 def cipher(plain_text: str, key: str) -> str:
     matrix = create_matrix(key)
+    for row in matrix: print(row)
     pairs = create_pairs(plain_text)
+    print(pairs)
     cipher_text = []
 
     for pair in pairs:
