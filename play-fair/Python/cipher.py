@@ -10,7 +10,6 @@ def create_matrix(key: str):
     matrix_str = matrix_str.replace('j', '')
 
     # Splitting string into 5x5 matrix
-    global matrix
     matrix = []
     range_start = 0
     for _ in range(5):
